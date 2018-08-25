@@ -15,8 +15,6 @@ import environ
 import dj_database_url
 import raven
 
-def get_list(text):
-    return [item.strip() for item in text.split(',')
 
 env = environ.Env(DEBUG=(bool, False))
 
