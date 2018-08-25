@@ -18,6 +18,8 @@ import raven
 
 env = environ.Env(DEBUG=(bool, False))
 
+root = environ.Path(__file__) -2
+environ.Env.read_env(root('.env'))
 DEBUG = env('DEBUG')
 # DEBUG = True
 
