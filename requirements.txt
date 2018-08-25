@@ -4,7 +4,7 @@ django-environ==0.4.5
 django-filter==2.0.0
 gunicorn==19.0.0
 psycopg2==2.7.5
-pytx==2018.5
+pytx==20.18.5
 raven==6.9.0
 whitenois==4.0
 
