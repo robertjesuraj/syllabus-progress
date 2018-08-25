@@ -9,7 +9,7 @@
         Date format must be YYYY-MM-DD
     </div>
     <form method="post">{% csrf_token %}
-        {{form.errors}}
+        <!-- {{form.errors}} -->
         <p><label for="syllabus_text">syllabus_text:</label>
             <input type="text" name="syllabus_text" id="syllabus_text" value="{{ syllabus_text }}"></p>
         <p><label for="proposed_date_completeion">proposed_date_completeion:</label>
@@ -17,7 +17,7 @@
         <p><label for="completion_status">completion_status:</label>
                     <input type="count" name="completion_status" id="completion_status"  value=0></p>
         <input type="submit" value="Submit" />
-        {{form}}
+        <!-- {{form}} -->
     </form> 
     
     
