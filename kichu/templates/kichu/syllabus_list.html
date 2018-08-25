@@ -34,12 +34,12 @@
                             <a href="{% url 'kichu:syllabus_delete' eachDate.id %}"><i class="far fa-trash-alt"></i></a> &nbsp;
                             {% if eachDate.completion_status <= 0 %}
                                 <a href="{% url 'kichu:syllabus_edit' eachDate.id %}">
-                                        <font color="red"> {{ eachDate.syllabus_text }} :{{ eachDate.proposed_date_completeion }} : {{ eachDate.completion_status }} </font>
+                                        <font color="red"> {{ eachDate.syllabus_text }} :: {{ eachDate.completion_status }} </font>
                                 </a>
                                 
                             {% else %} 
                                 <a href="{% url 'kichu:syllabus_edit' eachDate.id %}">
-                                        <font color="green"> {{ eachDate.syllabus_text }} : {{ eachDate.proposed_date_completeion }} : {{ eachDate.completion_status }} </font>
+                                        <font color="green"> {{ eachDate.syllabus_text }} :: {{ eachDate.completion_status }} </font>
                                 </a>
                                 
                             {% endif %}
