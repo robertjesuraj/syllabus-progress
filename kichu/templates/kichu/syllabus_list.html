@@ -1,0 +1,59 @@
+
+{% extends "kichu/base.html" %}
+
+{% block content %}
+<h2><a href="{% url 'kichu:syllabus_list' %}">Syllabus CBV</a></h2>
+<!-- <a href="{% url 'kichu:syllabus_new' %}">New</a> -->
+<!-- <button type="button" class="btn btn-primary" href="{% url 'kichu:syllabus_new' %}">New</button> -->
+<a class="btn btn-outline-primary" href="{% url 'kichu:syllabus_new' %}" role="button">New</a>
+<!-- {% if object_list %}
+    <ul>
+        {% for syllabus in object_list %}
+        <li>{{ syllabus.syllabus_text }}  ({{ syllabus.proposed_date_completeion }} Pages)
+        <a href="{% url 'kichu:syllabus_edit' syllabus.id %}">edit</a>
+        <a href="{% url 'kichu:syllabus_delete' syllabus.id %}">delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    Nothing to display
+{% endif %} -->
+
+{% regroup object_list|dictsort:"proposed_date_completeion"  by proposed_date_completeion as date_list %}
+
+<ul>
+    {% for proposed_date_completeion in date_list %}
+        <li><h4>{{ proposed_date_completeion.grouper }}</h4>
+            <ul>
+                <div class="card" style="width: 28rem;">
+                    <div class="card-body">
+                        {% for eachDate in proposed_date_completeion.list %}
+                        <li>
+                            
+                            <a href="{% url 'kichu:syllabus_edit' eachDate.id %}"><i class="far fa-edit"></i></a>&nbsp;
+                            <a href="{% url 'kichu:syllabus_delete' eachDate.id %}"><i class="far fa-trash-alt"></i></a> &nbsp;
+                            {% if eachDate.completion_status <= 0 %}
+                                <a href="{% url 'kichu:syllabus_edit' eachDate.id %}">
+                                        <font color="red"> {{ eachDate.syllabus_text }} :{{ eachDate.proposed_date_completeion }} : {{ eachDate.completion_status }} </font>
+                                </a>
+                                
+                            {% else %} 
+                                <a href="{% url 'kichu:syllabus_edit' eachDate.id %}">
+                                        <font color="green"> {{ eachDate.syllabus_text }} : {{ eachDate.proposed_date_completeion }} : {{ eachDate.completion_status }} </font>
+                                </a>
+                                
+                            {% endif %}
+                            <!-- <a class="btn btn-outline-danger btn-sm" href="{% url 'kichu:syllabus_delete' eachDate.id %}" role="button">Delete</a> -->
+                        </li>
+                        {% endfor %}
+                    </div>
+                </div>
+            
+            </ul>
+            <br>
+        </li>
+    {% endfor %}
+</ul> 
+
+
+{% endblock %}

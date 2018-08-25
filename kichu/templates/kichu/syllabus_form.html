@@ -1,0 +1,52 @@
+
+
+{% extends "kichu/base.html" %}
+
+{% block content %}
+
+    <h2><a href="{% url 'kichu:syllabus_list' %}">Syllabus</a>: Edit</h2>
+    <div class="alert alert-primary" role="alert">
+        Date format must be YYYY-MM-DD
+    </div>
+    <form method="post">{% csrf_token %}
+        {{form.errors}}
+        <p><label for="syllabus_text">syllabus_text:</label>
+            <input type="text" name="syllabus_text" id="syllabus_text" value="{{ syllabus_text }}"></p>
+        <p><label for="proposed_date_completeion">proposed_date_completeion:</label>
+                <input type="date" name="proposed_date_completeion" id="proposed_date_completeion" placeholder="YYYY-MM-DD" value="{{ proposed_date_completeion }}"></p>
+        <p><label for="completion_status">completion_status:</label>
+                    <input type="count" name="completion_status" id="completion_status"  value=0></p>
+        <input type="submit" value="Submit" />
+        {{form}}
+    </form> 
+    
+    
+<!--     
+    <form method="post">{% csrf_token %}
+         {% for field in form %}
+            <div class="form-group">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }} 
+                {{ field.field.widget.input_type }}
+            </div>
+        {% endfor %} 
+        <input type="submit" value="Submit" />
+    </form>  -->
+
+     <!-- <form method="post">{% csrf_token %}
+        {% for field in form.visible_fields %}
+            <div class="form-group">
+                    {{ field.errors }}      
+                    <p><label for="{{ field.label_tag }}"> </label>
+                        <input type="{{ field.field.widget.input_type }}"
+                            id="{{ field.id_for_label }}"
+                            name="{{ field.html_name }}"
+                            placeholder="{{ field.label }}"
+                        maxlength="{{ field.field.max_length }}" />
+                    </p>
+            </div>
+            
+        {% endfor %}
+        <input type="submit" value="Submit" />
+    </form>  -->
+{% endblock content %}
